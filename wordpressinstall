@@ -174,7 +174,7 @@
 		fi
 	else
 		
-				# Download, unpack and configure WordPress
+		# Download, unpack and configure WordPress
 		echo
 		read -r -p "Enter your WordPress installation folder name (without '/' on beign. or end) ? [e.g. mywebsite.com or html]: " wpURL
 		# Removing the current directory and files
