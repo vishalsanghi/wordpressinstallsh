@@ -2,6 +2,7 @@
 # Author: Vishal Dilip Sanghi
 # Install WordPress on a Debian/Ubuntu VPS
 # Created on: 26th April 2020
+# Last Updated on: 28th April 2020
 # References: https://gist.github.com/rjekic/2d04423bd167f8e7afd26f8982609378
 
 	echo "=================================================="
