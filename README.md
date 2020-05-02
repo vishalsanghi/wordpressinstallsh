@@ -16,11 +16,11 @@ The script is my first ever shell script public code. It is built for my custom 
 
 **Key Points & Assumptions:**
 
-* Passing correct values from user interface or from the configuration.
+* Passing correct values from user interface or from the configuration file.
 * You can change the config file name as needed but please ensure to modify the source in the wordpressinstall.sh too.
 * Script has lot of customizations please make use of it as needed.                                                                                
 
 **Disclaimer:**
 
-* Author does not take any responsibility of your data lose or any configuration loss.
+* Author does not take any responsibility of your data loss or any configuration loss.
 
