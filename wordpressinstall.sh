@@ -4,7 +4,7 @@
 # Created on: 26th April 2020
 # Last Updated on: 01st May 2020
 # References: https://gist.github.com/rjekic/2d04423bd167f8e7afd26f8982609378
-source config
+source config.sh
 
 function installwordpress() {
 	
