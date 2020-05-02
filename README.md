@@ -1,6 +1,6 @@
 ## Wordpress Installation Shell Script
 
-The script is written for my custom requirement. 
+The script is my first ever shell script public code. It is built for my custom requirement but I have made it generic so anyone can use it as needed. 
 
 **The script is divided into following parts and can be used as per your requirement:**
 
@@ -10,9 +10,9 @@ The script is written for my custom requirement.
 * Defininig the wordpress installation metadata - Title, Username, Password and Email.
 * Installing default wordpress plugin automatically with WP-CLI
 * Copying the wordpress backup zip file with custom source and destination. This is optional step.                                                 
-        * This is built for copying the latest zip file from wp-clone backup folder to your destination WP-Clone backup folder
-        * You would have already taken the backup from WP-Clone plugin manually for the current website.
-        * To restore the backup you need navigate to newly installed wordpress site and then restore from WP-Clone interface.
+  * This is built for copying the latest zip file from wp-clone backup folder to your destination WP-Clone backup folder
+  * You would have already taken the backup from WP-Clone plugin manually for the current website.
+  * To restore the backup you need navigate to newly installed wordpress site and then restore from WP-Clone interface.
 
 **Key Points & Assumptions:**
 
@@ -22,5 +22,5 @@ The script is written for my custom requirement.
 
 **Disclaimer:**
 
-*Author does not take any responsibility of your data lose or any configuration loss.
+* Author does not take any responsibility of your data lose or any configuration loss.
 
