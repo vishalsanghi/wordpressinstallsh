@@ -2,23 +2,23 @@
 # Author: Vishal Dilip Sanghi
 # Install WordPress on a Debian/Ubuntu VPS
 # Created on: 26th April 2020
-# Last Updated on: 01st May 2020
+# Last Updated on: 06th May 2020
 # References: https://gist.github.com/rjekic/2d04423bd167f8e7afd26f8982609378
-source config.sh
+source myconfig.sh
 
 function installwordpress() {
-	
+
 	# Download, unpack and configure WordPress
 	echo
 	read -r -p "Enter your WordPress installation folder name (without '/' on beign. or end) ? [e.g. mywebsite.com or html]: " wpURL
-	#Setting value to be picked from configuration file.
+	# Setting value to be picked from configuration file.
 	wpURL=${wpURL:-$cwpURL}
-	
+
 	# Removing the current directory and files
 	rm -r /var/www/$wpURL
 	echo
 	echo "****Removed current files and folder from wordpress site directory****"
-		
+
 	# Make new directory with the same name and path
 	mkdir /var/www/$wpURL
 	echo
@@ -34,45 +34,46 @@ function installwordpress() {
 	sed -i "s/database_name_here/$dbname/;s/username_here/$dbuser/;s/password_here/$userpass/" wp-config.php
 	echo "****Wordpress Download Sucessfull****"
 	echo
-		
+
 	# Entering details of the new Wordpress site
 	echo "======================================================="
 	echo "Ready to install Wordpress. Just enter few more details"
 	echo "======================================================="
 	read -p "Website url or local installation please mention (localhost): " url
-	#Setting value to be picked from configuration file.
+	# Setting value to be picked from configuration file.
 	url=${url:-$curl}
 	read -p "Wordpress Website title: " title
-	#Setting value to be picked from configuration file.
+	# Setting value to be picked from configuration file.
 	title=${title:-$ctitle}
 	read -p "Wordpress Admin username: " admin_name
-	#Setting value to be picked from configuration file.
+	# Setting value to be picked from configuration file.
 	admin_name=${admin_name:-$cadmin_name}
 	read -sp "Wordpress Admin password: " admin_pass
-	#Setting value to be picked from configuration file.
+	# Setting value to be picked from configuration file.
 	admin_pass=${admin_pass:-$cadmin_pass}
 	echo
 	read -p "Wordpress Admin email: " admin_email
-	#Setting value to be picked from configuration file.
+	# Setting value to be picked from configuration file.
 	admin_email=${admin_email:-$cadmin_email}
+        echo "Email ID is $admin_email"
 	echo
 	echo "============================================"
 	echo "Wordpress is now getting installed."
 	echo "============================================"
 	echo
-		
+
 	# Installing Wordpress site using credentials defined in above section
 	wp core install --url=$url --title="$title" --admin_name=$admin_name --admin_password=$admin_pass --admin_email=$admin_email --allow-root
-		
+
 	# Installing Wordpress plugins
-	#define array of plugin slugs to install. Enter multiple plugin with spaces in round bracket below.
+	# define array of plugin slugs to install. Enter multiple plugin with spaces in round bracket below.
 	echo "Installing default plugins"
-	#Setting value to be picked from configuration file.
+	# Setting value to be picked from configuration file.
 	plugin=${plugin:-$cplugin}
 	WPPLUGINS=( $plugin )
-	#Path of the installation folder of wordpress
+	# Path of the installation folder of wordpress
 	WPPATH=/var/www/$wpURL
-	#Command to install the actual plugins
+	# Command to install the actual plugins
 	wp plugin install ${WPPLUGINS[@]} --activate --path=$WPPATH --allow-root
 	echo
 	echo "==============================="
@@ -90,11 +91,11 @@ function installwordpress() {
 	echo "==============================="
 
 	# Restarting Services optional not needed
-	#systemctl restart apache2.service
-	#echo "Apache Service Restarted"
-	#echo
-	#systemctl restart mysql.service
-	#echo "My SQL Service Restarted"
+	# systemctl restart apache2.service
+	# echo "Apache Service Restarted"
+	# echo
+	# systemctl restart mysql.service
+	# echo "My SQL Service Restarted"
 	echo
 	echo "============================================"
 	echo "Hurray..!!! Wordpress sucessfully installed"
@@ -113,14 +114,14 @@ function installwordpress() {
 		# Specify Source Path
 		echo
 		read -r -p "Enter Source Path (without '/' at the end): " source
-		#Setting default value for variable source of source path - optional as needed
+		# Setting default value for variable source of source path - optional as needed
 		source=${source:-$cbkpsource}
 		# Specify Destination Path
 		echo
 		read -r -p "Enter Destination Path: " destination
-		#Setting default value for variable destination of destination path - optional as needed
+		# Setting default value for variable destination of destination path - optional as needed
 		destination=${destination:-$cbkpdestination}
-		#Command to find latest zip from source folder and copy to destination folder
+		# Command to find latest zip from source folder and copy to destination folder
 		echo
 		ls -ltr $source/*.zip | awk 'END{print $NF}'|xargs -i -t cp {}  $destination
 		echo
@@ -139,11 +140,11 @@ echo "=================================================="
 
 	# Create MySQL database
     read -sp "Enter your MySQL root password: " rootpass
-	#Setting value to be picked from configuration file.
+	# Setting value to be picked from configuration file.
 	rootpass=${rootpass:-$croot}
 	echo
 	read -p "Database name: " dbname
-	#Setting value to be picked from configuration file.
+	# Setting value to be picked from configuration file.
 	dbname=${dbname:-$cdbname}
 	
 	echo "CREATE DATABASE $dbname;" | mysql -u root -p$rootpass
@@ -160,20 +161,20 @@ echo "=================================================="
 		#Create a DB user
 		echo
 		read -p "Database username: " dbuser
-		#Setting value to be picked from configuration file.
+		# Setting value to be picked from configuration file.
 		dbuser=${dbuser:-$cdbuser}
 		read -sp "Enter a password for user $dbuser: " userpass
-		#Setting value to be picked from configuration file.
+		# Setting value to be picked from configuration file.
 		userpass=${userpass:-$cuserpass}
 		echo "CREATE USER '$dbuser'@'localhost' IDENTIFIED BY '$userpass';" | mysql -u root -p$rootpass
 	else
-		#Provide privileges to the existing user
+		# Provide privileges to the existing user
 		echo
 		read -p "Database username: " dbuser
-		#Setting value to be picked from configuration file.
+		# Setting value to be picked from configuration file.
 		dbuser=${dbuser:-$cedbuser}
 		read -sp "Enter a password for user $dbuser: " userpass
-		#Setting value to be picked from configuration file.
+		# Setting value to be picked from configuration file.
 		userpass=${userpass:-$ceuserpass}
 		echo "GRANT permission ON $dbname.* TO '$dbuser'@'localhost';" | mysql -u root -p$rootpass
 	fi

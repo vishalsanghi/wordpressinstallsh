@@ -1,55 +1,68 @@
 #!/bin/bash
 # Author: Vishal Dilip Sanghi
-# Install WordPress Config File on a Debian/Ubuntu VPS
-# Created on: 26th April 2020
-# Last Updated on: 01st May 2020
+# wordpressinstall.sh sample configuration file
+# Created On: 26th April 2020
+# Last Updated On: 07th May 2020
 
-#Enter the root SQL password 
-croot=<your-sql-root-password>
+# Enter the SQL Root Password 
 
-#Enter the new database name you want to create for wordpress installation
-cdbname=<yournewdatabasename>
+croot=sqlrootpassword
 
-#Database user configuration new or existing
-#---------------------------------------------------------------------------------------------------
-	#Enter the new user for above database you want to create for wordpress installation
-	cdbuser=<your-new-database-user>
+# Enter the new database name you want to create for wordpress installation
+cdbname=dbname
 
-	#Enter the new user password for above database you want to create for wordpress installation
-	cuserpass=<your-new=database=password>
-#---------------------------------------------------------------------------------------------------
-#										OR
-#---------------------------------------------------------------------------------------------------
-	#Enter the new user for above database you want to create for wordpress installation
-	cedbuser=<your-existing-database-user>
+# Database user configuration new or existing
+# Enter the new user for above database you want to create for wordpress installation
 
-	#Enter the new user password for above database you want to create for wordpress installation
-	ceuserpass=<your-existing-database-password>
-#---------------------------------------------------------------------------------------------------
+cdbuser=dbuser
 
-#Enter the new wordpress installation folder name or path
-cwpURL=<your-wordpress-installation-folder-path>
+# Enter the new user password for above database you want to create for wordpress installation
 
-#Enter the new wordpress installation URL. Ex. localhost or www.<yourwebsite>.com
-curl=<your-wordpress-URL>
+cuserpass=dbpassword
 
-#Enter the new wordpress installation Title
-ctitle=<your-wordpress-site-title>
+# Enter the new user for above database you want to create for wordpress installation
 
-#Enter the new wordpress installation Admin Name
-cadmin_name=<your-wordpress-admin-name>
+cedbuser=existingdbuser
 
-#Enter the new wordpress installation Admin Password
-cadmin_pass=<your-wordpress-admin-password>
+# Enter the new user password for above database you want to create for wordpress installation
 
-#Enter the new wordpress installation Admin Email
-cadmin_email=<your-wordpress-admin-email>
+ceuserpass=existingdbpassword
 
-#Enter the default wordpress plugin names to be installed. Please seperate plugin names by spaces. No spaces in plugin name are allowed.
-cplugin="<plugin-name1> <plugin-name2>"
+# Enter the new wordpress installation folder name or path
 
-#Enter the backup of source path without '/' at last
-cbkpsource=<your-backup-path=source>
+cwpURL=html
+
+# Enter the new wordpress installation URL
+
+curl=localhost
+
+# Enter the new wordpress site Title
+
+ctitle=newwordpress
+
+# Enter the new wordpress installation Admin Name
+
+cadmin_name=adminname
+
+# Enter the new wordpress installation Admin Password
+
+cadmin_pass=adminpassword
+
+# Enter the new wordpress installation Admin Email
+
+cadmin_email=admin@yourdomain.com
+
+# Enter the default wordpress plugin names to be installed
+# Please seperate plugin names by spaces and no spaces in plugin name is allowed
+# Sample plugins are mentioned below can be replaced as needed
+
+cplugin="wp-clone-by-wp-academy wp-autoupdates"
+
+# Enter the backup of source path
+# Please do not end the path with /
+
+cbkpsource=/home/vishalsanghi/wordpress
 
 #Enter the backup of destination path
-cbkpdestination=<your-backup-path=destination>
+
+cbkpdestination=/home/vishalsanghi/wordpress1
